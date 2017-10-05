@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom.R
 \name{theme_timeline}
 \alias{theme_timeline}
-\title{Theme for better timeline visualization in ggplot2}
+\title{A theme for styling \code{geom_timeline} plots}
 \usage{
 theme_timeline()
 }

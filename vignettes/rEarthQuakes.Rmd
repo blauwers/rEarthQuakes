@@ -18,15 +18,13 @@ library(rEarthQuakes)
 
 The following Vignette is intended to explain the functions found in this package.
 
-This capstone project will be centered around a dataset obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) on significant earthquakes around the world. This dataset contains information about 5,933 earthquakes over an approximately 4,000 year time span.
+This package is centered around a dataset obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) on significant earthquakes around the world. The NOAA dataset contains information about 5,933 earthquakes over an approximately 4,000 year time span.
 
-The overall goal of the capstone project is to integrate the skills you have developed over the courses in this Specialization and to build a software package that can be used to work with the NOAA Significant Earthquakes dataset. This dataset has a substantial amount of information embedded in it that may not be immediately accessible to people without knowledge of the intimate details of the dataset or of R. Your job is to provide the tools for processing and visualizing the data so that others may extract some use out of the information embedded within.
-
-The ultimate goal of the capstone is to build an R package that will contain features and will satisfy a number of requirements that will be laid out in the subsequent Modules. You may want to begin organizing your package and insert various features as you go through the capstone project.
+The software package that can be used to work with the NOAA Significant Earthquakes dataset. This dataset has a substantial amount of information embedded in it that may not be immediately accessible to people without knowledge of the intimate details of the dataset or of R. It provides tools for processing and visualizing the data so that others may extract some use out of the information embedded within.
 
 # Dataset
 
-[NOAA Significant Earthquake Database](https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1)
+The dataset for which this package is designed can be obtained from the [NOAA Significant Earthquake Database](https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1). Alternatively, the following code snippet will read the data from the site directly.
 
 
 ```{r reading NOAA data, message=FALSE, warning=FALSE}
@@ -38,29 +36,36 @@ data <- readr::read_delim("https://www.ngdc.noaa.gov/nndc/struts/results?type_0=
 
 ## `eq_clean_data()`
 
-This module is fairly straightforward and involves obtaining/downloading the dataset and writing functions to clean up some of the variables. The dataset is in tab-delimited format and can be read in using the read_delim() function in the readr package.
+This function cleans the NOAA dataset to allow correct processing. The raw NOAA dataset is in tab-delimited format and can be read in using the read_delim() function in the readr package.
 
-After downloading and reading in the dataset, the overall task for this module is to write a function named eq_clean_data()that takes raw NOAA data frame and returns a clean data frame. The clean data frame should have the following:
+The function `eq_clean_data()` takes a raw NOAA data frame and returns a clean data frame. The clean data frame has the following:
 
 1. A date column created by uniting the year, month, day and converting it to the Date class
 2. LATITUDE and LONGITUDE columns converted to numeric class
-3. Location names cleaned with the `eq_location_clean()` function
+3. Location names cleaned with the (internal) `eq_location_clean()` function
 
 ```{r eq_clean_data demo}
-data %>% eq_clean_data() %>% dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%  dplyr::mutate(popup_text = eq_create_label(.)) %>%  eq_map(annotation = "popup_text")
+data %>%
+        eq_clean_data() %>%
+        dplyr::filter(COUNTRY == "MEXICO" & YEAR >= 2000) %>% 
+        dplyr::mutate(popup_text = eq_create_label(.)) %>%
+        eq_map(annotation = "popup_text")
 ```
 
 ## `eq_map()`
 
-Takes a clean NOAA data frame with earthquakes to visualize. Maps the epicenters (LATITUDE/LONGITUDE) and annotates each earthquake with a popup.
+The function `eq_map()` takes a cleaned NOAA data frame with earthquakes to visualize. It generates a `leaflet` map of the epicenters (LATITUDE/LONGITUDE) and annotates each earthquake with a popup.
 
 ```{r eq_map}
-data %>% eq_clean_data() %>% dplyr::filter(COUNTRY == "BELGIUM") %>% eq_map(annotation = "DATE")
+data %>%
+        eq_clean_data() %>%
+        dplyr::filter(COUNTRY == "BELGIUM") %>%
+        eq_map(annotation = "DATE")
 ```
 
 ## `eq_create_label()`
 
-Creates an annotation for each earthquake that will show the cleaned location, the magnitude (EQ_PRIMARY), and the total number of deaths (TOTAL_DEATHS), with boldface labels for each ("Location", "Total deaths", and "Magnitude"). If an earthquake is missing values for any of these, both the label and the value will be skipped for that element of the tag.
+The function `eq_create_label()` creates an annotation for each earthquake showing the location, magnitude (EQ_PRIMARY), and total number of deaths (TOTAL_DEATHS). Missing values will be ignored during label generation.
 
 ```{r eq_create_label}
 data %>%
@@ -72,7 +77,7 @@ data %>%
 
 ## `geom_timeline()`
 
-A geom that plots a timeline of earthquakes in one line optionally grouped by country, colored by number of casualties and size by scale.
+The function `geom_timeline()` plots earthquakes from a cleaned NOAA data frame on a timeline and optionally grouped by country, colored by number of casualties, and sized by scale.
 
 ```{r geom_timeline}
 data %>%
@@ -87,7 +92,7 @@ data %>%
 
 ## `geom_timeline_label()`
 
-Plots timeline labels of earthquakes based on cleaned NOAA data. It should be used with combination with \code{geom_timeline}. The required aesthetics for this geom is \code{label} that should contain string for labeling each data point.
+This function plots timeline labels of earthquakes based on cleaned NOAA data. It should be used in combination with \code{geom_timeline}. The required aesthetics for this geom is a \code{label} that should describe each data point.
 
 ```{r geom_timeline_label}
 data %>%
@@ -102,7 +107,7 @@ data %>%
 
 ## `theme_timeline()`
 
-A theme for styling \code{\link{geom_timeline}} plots.
+This function can be used as a theme to style \code{\link{geom_timeline}} plots.
 
 ```{r theme_timeline}
 data %>%

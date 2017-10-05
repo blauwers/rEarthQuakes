@@ -1,4 +1,6 @@
-#'  This function takes raw NOAA data frame and returns a clean data frame:
+#' Cleans raw NOAA significant earthquake data
+#'
+#' @description  This function takes raw NOAA data frame and returns a clean data frame:
 #'   1) Filters year column to prevent parsing warnings when uniting
 #'   2) Unites the year, month, day and converts it to the Date class
 #'   3) Converts Latitute and Longitude to numeric
@@ -62,10 +64,4 @@ eq_location_clean <- function(data) {
                                        base::tolower() %>%
                                        base::gsub(".*: ", "", .) %>%
                                        tools::toTitleCase())
-
-        # data %>%
-        #         dplyr::mutate_(LOCATION_NAME = ~LOCATION_NAME %>%
-        #                                stringr::str_replace(base::paste0(COUNTRY, ":"), "") %>%
-        #                                stringr::str_trim("both") %>%
-        #                                stringr::str_to_title())
 }

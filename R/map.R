@@ -36,11 +36,11 @@ eq_map <- function(data, annotation) {
                 )
 }
 
-#' Creates a Popup text for Location, Magnitude, and Total number of Deaths in HTML format.
+#' Popup annotation for \code{eq_map} with Location, Magnitude, and Total number of Deaths
 #'
 #' Creates an annotation for each earthquake that will show the location,
-#' magnitude (EQ_PRIMARY), and total number of deaths (TOTAL_DEATHS), with bold
-#' labels for each ("Location", "Total deaths", and "Magnitude"). If an
+#' magnitude (EQ_PRIMARY), and total number of deaths (TOTAL_DEATHS), with respective
+#' labels "Location", "Total deaths", and "Magnitude". If an
 #' earthquake is missing values for any of these, both the label and the value
 #' will be skipped for that element of the tag.
 #'

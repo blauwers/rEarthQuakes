@@ -177,7 +177,7 @@ GeomTimelineLabel <-
                 }
         )
 
-#' Theme for better timeline visualization in ggplot2
+#' A theme for styling \code{geom_timeline} plots
 #'
 #' @description  A theme for styling \code{\link{geom_timeline}} plots.
 #'
