@@ -13,21 +13,20 @@ eq_create_label(data)
 Popup text for Location, Magnitude, and Total number of Deaths (HTML formatted)
 }
 \description{
-Creates an HTML label that can be used as the annotation text in the leaflet map.
-This function put together a character string for each earthquake that will show
-the cleaned location , the magnitude (EQ_PRIMARY), and the total number of deaths
-(TOTAL_DEATHS), with boldface labels for each ("Location", "Total deaths", and
-"Magnitude"). If an earthquake is missing values for any of these, both the label
-and the value will be skipped for that element of the tag.
+Creates an annotation for each earthquake that will show the location,
+magnitude (EQ_PRIMARY), and total number of deaths (TOTAL_DEATHS), with bold
+labels for each ("Location", "Total deaths", and "Magnitude"). If an
+earthquake is missing values for any of these, both the label and the value
+will be skipped for that element of the tag.
 }
 \examples{
 \dontrun{
  eq_create_label(data)
 
  data \%>\%
-       dplyr::filter(COUNTRY \%in\% COUNTRIES & lubridate::year(DATE) >= 2000) \%>\%
+       dplyr::filter(COUNTRY \%in\% COUNTRIES & YEAR >= 2000) \%>\%
        dplyr::mutate(popup_text = eq_create_label(.)) \%>\%
-       eq_map(annot_col = "popup_text")
+       eq_map(annotation = "popup_text")
 }
 
 }

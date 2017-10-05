@@ -5,8 +5,8 @@
 \title{Timeline of earthquakes}
 \usage{
 geom_timeline(mapping = NULL, data = NULL, stat = "identity",
-  position = "identity", na.rm = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ...)
+  position = "identity", na.rm = F, show.legend = NA, inherit.aes = T,
+  ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -52,8 +52,9 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 to the paired geom/stat.}
 }
 \description{
-This geom plots a timeline of earthquakes in one line with
-options to group by country, color by number of casualties and size by scale
+A geom that plots a timeline of earthquakes in one line
+  optionally grouped by country, colored by number of casualties and size by
+  scale.
 }
 \details{
 The function plots a timeline of earthquakes based on cleaned NOAA
@@ -63,7 +64,7 @@ be used to group data by a selected variable (for example country).
 \examples{
 \dontrun{
 data \%>\% eq_clean_data() \%>\%
-   filter(COUNTRY \%in\% c("GREECE", "ITALY"), YEAR > 2000) \%>\%
+   filter(COUNTRY \%in\% c("USA", "MEXICO"), YEAR > 2000) \%>\%
    ggplot(aes(x = DATE,
               y = COUNTRY,
               color = as.numeric(TOTAL_DEATHS),

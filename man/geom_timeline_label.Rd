@@ -5,8 +5,8 @@
 \title{Timeline labels of earthquakes}
 \usage{
 geom_timeline_label(mapping = NULL, data = NULL, stat = "identity",
-  position = "identity", ..., na.rm = FALSE, n_max = NULL,
-  show.legend = NA, inherit.aes = TRUE)
+  position = "identity", ..., na.rm = F, n_max = NULL, show.legend = NA,
+  inherit.aes = T)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -59,10 +59,10 @@ This geom plots timeline labels of earthquakes. It assumes that
 \code{geom_timeline} was used to create the timelines
 }
 \details{
-The function plots timeline labels of earthquakes based on cleaned
-NOAA data. It should be used with combination with \code{geom_timeline}. The
-required aesthetics for this geom is \code{label} that should contain
-string for labeling each data point.
+Plots timeline labels of earthquakes based on cleaned NOAA data. It
+  should be used with combination with \code{geom_timeline}. The required
+  aesthetics for this geom is \code{label} that should contain string for
+  labeling each data point.
 }
 \examples{
 \dontrun{

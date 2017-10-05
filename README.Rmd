@@ -62,12 +62,13 @@ We can also plot the individual earthquakes on an interactive `leaflet` map incl
 ```{r Earthquake Map}
 data %>% 
   eq_clean_data() %>% 
-  dplyr::filter(COUNTRY == "USA" & lubridate::year(DATE) >= 2005) %>% 
+  dplyr::filter(COUNTRY == "MEXICO" & YEAR >= 2000) %>% 
   dplyr::mutate(popup_text = eq_create_label(.)) %>% 
   eq_map(annotation = "popup_text") -> map
 ```
 
 ```{r hidden, echo=FALSE, message=FALSE, warning=FALSE}
+map %>% addProviderTiles(providers$OpenStreetMap) -> map
 saveWidget(map, "leaflet.html", selfcontained = FALSE)
 p <- webshot("leaflet.html", file = "README-Earthquake Map-1.png", cliprect = "viewport")
 knitr::include_graphics("README-Earthquake Map-1.png")

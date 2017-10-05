@@ -36,7 +36,7 @@ data %>%
         theme_timeline() +
         labs(size = "Richter scale value", color = "# deaths") + 
         scale_x_date(limits = c(lubridate::ymd("2005-01-01"), 
-                                lubridate::ymd("2020-01-01")))
+                                lubridate::ymd("2018-01-01")))
 ```
 
 ![](README-Earthquake%20Timeline%20Plot-1.png)
@@ -46,7 +46,7 @@ We can also plot the individual earthquakes on an interactive `leaflet` map incl
 ``` r
 data %>% 
   eq_clean_data() %>% 
-  dplyr::filter(COUNTRY == "USA" & lubridate::year(DATE) >= 2005) %>% 
+  dplyr::filter(COUNTRY == "MEXICO" & YEAR >= 2000) %>% 
   dplyr::mutate(popup_text = eq_create_label(.)) %>% 
   eq_map(annotation = "popup_text") -> map
 ```

@@ -9,23 +9,22 @@ eq_map(data, annotation)
 \arguments{
 \item{data}{Filtered dataframe of NOAA earthquakes dataset}
 
-\item{annotation}{Column name from dataset used for the annotation in the pop-up}
+\item{annotation}{Column name from dataset used as annotation in the popup}
 }
 \value{
 leaflet MAP shown with a circle markers, and the radius of the circle marker is
          proportional to the earthquake's magnitude.
 }
 \description{
-This akes an argument data containing the filtered data frame with earthquakes to visualize.
-The function maps the epicenters (LATITUDE/LONGITUDE) and annotates each point with in pop up
-window containing annotation data stored in a column of the data frame.
+Takes a clean NOAA data frame with earthquakes to visualize. Maps the
+epicenters (LATITUDE/LONGITUDE) and annotates each earthquake with a popup.
 }
 \examples{
 \dontrun{
  eq_map(data, annotation = "DATE")
 
  data \%>\%
-       dplyr::filter(COUNTRY \%in\% COUNTRIES & lubridate::year(DATE) >= 2000) \%>\%
+       dplyr::filter(COUNTRY \%in\% COUNTRIES & YEAR >= 2000) \%>\%
        eq_map(annotation = "DATE")
 }
 

@@ -7,13 +7,12 @@
 theme_timeline()
 }
 \description{
-This is a simple theme that makes \code{\link{geom_timeline}}
-look better.
+A theme for styling \code{\link{geom_timeline}} plots.
 }
 \examples{
 \dontrun{
 data \%>\% eq_clean_data() \%>\%
-filter(COUNTRY \%in\% c("GREECE", "ITALY"), YEAR > 2000) \%>\%
+filter(COUNTRY \%in\% c("USA", "CHINA"), YEAR > 2000) \%>\%
    ggplot(aes(x = DATE,
               y = COUNTRY,
               color = as.numeric(TOTAL_DEATHS),
