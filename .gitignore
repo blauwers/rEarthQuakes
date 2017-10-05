@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+inst/doc
+leaflet.html
+leaflet_files
+README_cache
+vignettes/rEathQuakes.R
+vignettes/rEathQuakes.html

@@ -1,0 +1,18 @@
+Package: rEarthQuakes
+Type: Package
+Title: Visualizes NOAA Significant Earthquake Data into Timeline and Map Data
+Version: 0.1.0
+Author: Bart
+Maintainer: Bart <me@example.com>
+Description: Visualizes NOAA Significant Earthquake Data into Timeline and Map Data.
+License: file LICENSE
+License_restricts_use: yes
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Depends: dplyr, ggplot2, tidyr, leaflet, lubridate
+Suggests: knitr,
+    rmarkdown,
+    testthat,
+    readr
+VignetteBuilder: knitr
