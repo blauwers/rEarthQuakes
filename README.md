@@ -2,7 +2,7 @@
 rEarthQuakes
 ============
 
-[![Travis-CI Build Status](https://travis-ci.org/blauwers/rEarthQuakes?branch=master)](https://travis-ci.org/blauwers/rEathhQuakes)
+[![Travis-CI Build Status](https://travis-ci.org/blauwers/rEarthQuakes?branch=master)](https://travis-ci.org/blauwers/rEarthQuakes)
 
 Description
 -----------
