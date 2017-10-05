@@ -21,7 +21,7 @@ require(rEarthQuakes)
 
 # rEarthQuakes
 
-[![Travis-CI Build Status](https://travis-ci.org/blauwers/rEarthQuakes?branch=master)](https://travis-ci.org/blauwers/rEarthQuakes)
+[![Build Status](https://travis-ci.org/blauwers/rEarthQuakes.svg?branch=master)](https://travis-ci.org/blauwers/rEarthQuakes)
 
 ## Description
 
